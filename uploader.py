@@ -10,6 +10,9 @@ import gdata.data
 import gdata.docs.data
 import gdata.docs.client
 import ConfigParser
+
+from twython import Twython
+import twiter
  
 class MotionUploader:
     def __init__(self, config_file_path):
@@ -40,7 +43,11 @@ class MotionUploader:
         self.send_email = config.getboolean('options', 'send-email')
         
         # Twitter account credentials
-        
+        self.twitterpost = config.getboolean('options', 'post-on-twitter')
+        self.consumer_key = config.get('twitter', 'consumer_key')
+        self.consumer_secret = config.get('twitter', 'consumer_secret')
+        self.access_key = config.get('twitter', 'access_key')
+        self.access_secret = config.get('twitter', 'access_secret')
          
         self._create_gdata_client()
  
@@ -102,6 +109,9 @@ class MotionUploader:
             
      def post_tweet(self, config_file_path):
          """Post a tweet on my house's twitter account that a motion has been detected"""
+         if self.twitterpost:
+          api = Twython(self.consumer_key, self.consumer_secret, self.access_key, self.access_secret)
+          api.update_status('Motion Detected')
  
 if __name__ == '__main__':        
     try:

@@ -12,7 +12,7 @@ import gdata.docs.client
 import ConfigParser
 
 from twython import Twython
-import twiter
+import twitter
  
 class MotionUploader:
     def __init__(self, config_file_path):
@@ -43,7 +43,7 @@ class MotionUploader:
         self.send_email = config.getboolean('options', 'send-email')
         
         # Twitter account credentials
-        self.twitterpost = config.getboolean('options', 'post-on-twitter')
+        self.twitterpost = config.getboolean('options', 'post-update')
         self.consumer_key = config.get('twitter', 'consumer_key')
         self.consumer_secret = config.get('twitter', 'consumer_secret')
         self.access_key = config.get('twitter', 'access_key')

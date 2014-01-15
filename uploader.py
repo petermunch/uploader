@@ -107,11 +107,11 @@ class MotionUploader:
         if self.delete_after_upload:
             os.remove(video_file_path)
             
-     def post_tweet(self, config_file_path):
-         """Post a tweet on my house's twitter account that a motion has been detected"""
-         if self.twitterpost:
-          api = Twython(self.consumer_key, self.consumer_secret, self.access_key, self.access_secret)
-          api.update_status('Motion Detected')
+    def post_tweet(self, config_file_path):
+        """Post a tweet on my house's twitter account that a motion has been detected"""
+        if self.twitterpost:
+         api = Twython(self.consumer_key, self.consumer_secret, self.access_key, self.access_secret)
+         api.update_status(status='Motion Detected')
  
 if __name__ == '__main__':        
     try:

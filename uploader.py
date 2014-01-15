@@ -38,6 +38,9 @@ class MotionUploader:
         # Options
         self.delete_after_upload = config.getboolean('options', 'delete-after-upload')
         self.send_email = config.getboolean('options', 'send-email')
+        
+        # Twitter account credentials
+        
          
         self._create_gdata_client()
  
@@ -96,6 +99,9 @@ class MotionUploader:
  
         if self.delete_after_upload:
             os.remove(video_file_path)
+            
+     def post_tweet(self, config_file_path):
+         """Post a tweet on my house's twitter account that a motion has been detected"""
  
 if __name__ == '__main__':        
     try:

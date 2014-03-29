@@ -66,7 +66,7 @@ class MotionUploader:
                 break   
         return col
      
-    def _send_email(self,msg):
+    def _send_email(self, msg):
         '''Send an email using the GMail account.'''
         senddate=datetime.strftime(datetime.now(), '%Y-%m-%d')
         m="Date: %s\r\nFrom: %s <%s>\r\nTo: %s\r\nSubject: %s\r\nX-Mailer: My-Mail\r\n\r\n" % (senddate, self.from_name, self.sender, self.recipient, self.subject)
@@ -110,8 +110,8 @@ class MotionUploader:
     def post_tweet(self, config_file_path):
         """Post a tweet on my house's twitter account that a motion has been detected"""
         if self.twitterpost:
-         api = Twython(self.consumer_key, self.consumer_secret, self.access_key, self.access_secret)
-         api.update_status(status='Motion Detected')
+            api = Twython(self.consumer_key, self.consumer_secret, self.access_key, self.access_secret)
+            api.update_status(status='Motion Detected')
  
 if __name__ == '__main__':        
     try:
